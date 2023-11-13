@@ -8,10 +8,11 @@
 
 |총 문제수|획득 경험치|연속 학습|
 |---:|---:|---|
-1|90xp|1일째🔥|
+2|90xp|1일째🔥|
 
 |교재|이름|난이도|상태|최근 제출 코드|
 |---|---|:---:|:---:|---|
+|[Novice Mid / 완전탐색 I / 자리 수 단위로 완전탐색](https://www.codetree.ai/missions?missionId=5)|[[연습]마라톤 중간에 택시타기 2](https://www.codetree.ai/missions/5/problems/taking-a-taxi-in-the-middle-of-the-marathon-2)|![보통][medium]|![Passed][passed]|[링크](https://github.com/proHyundo/codetree-TILs/blob/main/231113/%EB%A7%88%EB%9D%BC%ED%86%A4%20%EC%A4%91%EA%B0%84%EC%97%90%20%ED%83%9D%EC%8B%9C%ED%83%80%EA%B8%B0%202/taking-a-taxi-in-the-middle-of-the-marathon-2.py)|
 |[Novice Mid / 완전탐색 I / 자리 수 단위로 완전탐색](https://www.codetree.ai/missions?missionId=5)|[[연습]원 모양으로 되어있는 방](https://www.codetree.ai/missions/5/problems/a-room-in-a-circle)|![보통][medium]|![Passed][passed]|[링크](https://github.com/proHyundo/codetree-TILs/blob/main/231113/%EC%9B%90%20%EB%AA%A8%EC%96%91%EC%9C%BC%EB%A1%9C%20%EB%90%98%EC%96%B4%EC%9E%88%EB%8A%94%20%EB%B0%A9/a-room-in-a-circle.py)|
 
 
