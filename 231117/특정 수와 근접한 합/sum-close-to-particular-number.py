@@ -1,12 +1,12 @@
 import sys
-s, n = map(int, input().split())
+n, s = map(int, input().split())
 _list = list(map(int, input().split()))
 
 _sum = sum(_list)
-diff = sys.maxsize
+ans = sys.maxsize
 
-for i in range(s-1):
-    for j in range(i+1, s): 
-        diff = min(diff, _sum - _list[i] - _list[j])
+for i in range(n-1):
+    for j in range(i+1, n): 
+        ans = min(ans, abs(s - (_sum - _list[i] - _list[j])))
 
-print(abs(n - diff))
+print(abs(ans))
