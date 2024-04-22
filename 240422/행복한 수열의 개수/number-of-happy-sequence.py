@@ -3,7 +3,6 @@ board = [list(map(int, input().split())) for _ in range(n)]
 answer = 0
 
 def find_seq(target):
-    print('target : ',target)
     count = 1
     for i in range(0, n-1):
         if target[i] == target[i+1]:
