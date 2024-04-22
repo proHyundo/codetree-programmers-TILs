@@ -14,5 +14,8 @@ for i in range(n-2):
     for j in range(m):
         answer = max(answer, board[i][j] + board[i+1][j] + board[i+2][j])
 
+for i in range(n):
+    for j in range(m-2):
+        answer = max(answer, board[i][j] + board[i][j+1] + board[i][j+2])
 
 print(answer)
