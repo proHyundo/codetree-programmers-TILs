@@ -1,4 +1,9 @@
 ```
+T = int(input())
+for test_case in range(1, T + 1):
+    print(f'#{test_case}',)
+```
+```
 # 문제 이름: [문제 이름 삽입]
 # 해결 날짜: [YY-MM-DD 형식으로 날짜 삽입]
 # 소요 시간: [문제를 해결하는데 걸린 시간 삽입, 예: 45분]
