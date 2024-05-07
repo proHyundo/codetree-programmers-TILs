@@ -1,21 +1,22 @@
-def dfs(n, s, tlst):
-    if n==M:
-        ans.append(tlst)
+N, M = map(int, input().split())
+nums = list(map(int, input().split()))
+nums.sort()
+checked = [False] * 10001
+ans = []
+
+
+def dfs(n, start_index, lst):
+    if n == M:
+        ans.append(lst)
         return
 
-    for j in range(s, N):   # 오름차순 수열을 위해서 선택한 숫자 이후 값부터 선택
-        if v[j]==0:
-            v[j]=1
-            dfs(n+1, j+1, tlst+[lst[j]])
-            v[j]=0
+    for i in range(start_index, N):
+        if not checked[nums[i]+1]:
+            checked[nums[i]+1] = True
+            dfs(n+1, i+1, lst + [nums[i]])
+            checked[nums[i]+1] = False
 
-N, M = map(int, input().split())
-lst = sorted(list(map(int, input().split())))
 
-ans = []
-v = [0]*N
-# 선택개수, 시작j위치, tlst
 dfs(0, 0, [])
-
-for lst in ans:
-    print(*lst)
+for ele in ans:
+    print(*ele)
