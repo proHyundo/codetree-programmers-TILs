@@ -21,7 +21,9 @@ def dfs(n, profit, sm):
     # 남은 작업량이 없다면
     if sm == 0:
         # 외주를 받는다면 : 다음 날짜로, 수익을 챙기고, 작업량이 생기고
-        dfs(n+1, profit + p_list[n], t_list[n] - 1)
+        # 단, 휴가일자를 넘기지 않아야 함.
+        if n + t_list[n] <= N:
+            dfs(n+1, profit + p_list[n], t_list[n] - 1)
         # 외주를 받지 않는다면 : 다음 날짜로, 수익은 그대로, 작업량 0
         dfs(n+1, profit, 0)
     else:
