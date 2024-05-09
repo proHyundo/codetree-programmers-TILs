@@ -9,8 +9,7 @@ for test_case in range(1, T+1):
 
     def dfs(n, s, x, y):
         if n == 7:
-            if s not in ans:
-                ans.add(s)
+            ans.add(s)  # set 자료형 이기 때문에 'if s not in ans:' 으로 검사할 필요 없음.
             return
         for dx, dy in zip(dxs, dys):
             nx, ny = x + dx, y + dy
