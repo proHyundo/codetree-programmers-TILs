@@ -20,6 +20,6 @@ for test_case in range(1, T+1):
 
     for i in range(4):
         for j in range(4):
-            dfs(1, board[i][j], i, j)
+            dfs(1, board[i][j], i, j)  # 이미 문자 1개는 골라진 상태이다.
 
     print(f'#{test_case}', len(ans))
