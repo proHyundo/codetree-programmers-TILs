@@ -1,5 +1,3 @@
-# 이진 트리로 완전탐색 해야 할 것 같음.
-# 가지치기 가능할듯
 T = int(input())
 for test_case in range(1, T + 1):
     N = int(input())
@@ -8,9 +6,10 @@ for test_case in range(1, T + 1):
     ]
 
     ans = 20000 * N * N
+    alst = []
+    blst = []
 
-
-    def dfs(n, alst, blst):
+    def dfs(n):
         global ans
         if n == N:
             if len(alst) >= 2 and len(blst) >= 2:
@@ -23,10 +22,14 @@ for test_case in range(1, T + 1):
                         bsum += foods[i][j]
                 ans = min(ans, abs(asum-bsum))
             return
+        alst.append(n)
+        dfs(n+1)
+        alst.pop()
 
-        dfs(n+1, alst + [n], blst)
-        dfs(n+1, alst, blst+[n])
+        blst.append(n)
+        dfs(n+1)
+        blst.pop()
 
 
-    dfs(0, [], [])
+    dfs(0)
     print(f'#{test_case}', ans)
