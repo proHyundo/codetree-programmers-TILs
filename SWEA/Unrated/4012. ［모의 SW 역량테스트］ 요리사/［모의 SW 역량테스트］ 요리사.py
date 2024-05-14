@@ -12,7 +12,7 @@ for test_case in range(1, T + 1):
     def dfs(n):
         global ans
         if n == N:
-            if len(alst) >= 2 and len(blst) >= 2:
+            if len(alst) >= 2 and len(blst) >= 2:  # 식재료 개수 N을 2로 나눈다고 했기 때문에 `len(alst) == N // 2` 으로 변경하는 것이 좋아보임.
                 asum = bsum = 0
                 for i in alst:
                     for j in alst:
