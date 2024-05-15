@@ -22,6 +22,7 @@ for _ in range(10):
     def bfs(si, sj):
         q = deque()
         q.append((si, sj))
+        visited[si][sj] = 1
 
         while q:
             ci, cj = q.popleft()
