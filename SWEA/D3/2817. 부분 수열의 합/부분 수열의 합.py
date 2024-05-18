@@ -7,6 +7,9 @@ for test_case in range(1, T+1):
 
     def dfs(n, sm):
         global ans
+        if sm > K:
+            return 
+
         if n == N:
             if sm == K:
                 ans += 1
