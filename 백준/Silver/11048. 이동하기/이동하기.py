@@ -1,3 +1,5 @@
+# DP 초기 세팅 보다, 행 열을 1개 씩 추가해서 0으로 padding 을 주면 코드가 깔끔.
+
 N, M = map(int, input().split())
 board = [
     list(map(int, input().split())) for _ in range(N)
