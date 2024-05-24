@@ -4,6 +4,7 @@ dp = [
     [0] * 10 for _ in range(N+1)
 ]
 
+# dp[1] = [1] * 10 으로 대체 가능
 for i in range(10):
     dp[1][i] = 1
 
