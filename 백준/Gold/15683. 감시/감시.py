@@ -10,7 +10,6 @@ for i in range(N):
             cctv.append((arr[i][j], i, j))
 
 cctv_len = len(cctv)
-# print(cctv)
 ans = N * M
 
 dxys = {
@@ -39,21 +38,19 @@ def calculate(tdirection):  # cctv 정보와 방향정보
                     cx, cy = nx, ny
                 else:
                     break
-    # for row in v:
-    #     print(row)
+
     cnt = 0
     for i in range(N):
         for j in range(M):
             if not v[i][j] and arr[i][j] == 0:
                 cnt += 1
-    # print(cnt)
+
     return cnt
 
 
 def dfs(n, directions):
     global ans
     if n == cctv_len:
-        # print('directions', directions)
         ans = min(ans, calculate(directions))
         return
 
