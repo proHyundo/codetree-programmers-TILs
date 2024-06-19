@@ -1,7 +1,6 @@
 N, M = map(int, input().split())
 arr = [list(map(int, input().split())) for _ in range(N)]
 cctv = []
-cctv_directions = []
 
 # 주어진 arr 에서 cctv 유형 및 좌표를 cctv 리스트에 저장
 for i in range(N):
