@@ -35,3 +35,33 @@ def solution(n, computers):
 
     answer += visited.count(0)
     return answer
+
+"""
+2 번 째 풀이
+from collections import deque
+
+
+def solution(n, computers):
+    answer = 0
+    visited = [False] * n
+
+    def bfs(start):
+        q = deque()
+        q.append(start)
+        visited[start] = True
+
+        while q:
+            cur_node = q.popleft()
+            for nxt_node in range(n):
+                if computers[cur_node][nxt_node] == 1 and cur_node != nxt_node and not visited[nxt_node]:
+                    visited[nxt_node] = True
+                    q.append(nxt_node)
+
+    for node in range(n):
+        if visited[node]:
+            continue
+        answer += 1
+        bfs(node)
+
+    return answer
+"""
