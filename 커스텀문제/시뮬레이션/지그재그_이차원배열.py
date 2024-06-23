@@ -40,6 +40,7 @@ def go_down_left(x, y):
     return y, x
 
 
+# 상부
 for _ in range(N-1):
     if flag:
         cx, cy = go_right(cx, cy)
@@ -51,20 +52,19 @@ for _ in range(N-1):
     flag = not flag
 
 
-# N이 짝수라서 상부 함수가 (N-1, 0)에서 끝나는 경우
+# N이 짝수라서 상부 함수가 (N-1, 0)에서 끝나는 경우 / N이 홀수라서 상부 함수가 (0, N-1)에서 끝나는 경우
 if N % 2 == 0:
     flag = True
 else:
     flag = False
 
-
+# 하부
 while (cx, cy) != (N-1, N-1):
-    # 현재 위치가 오른쪽 한 칸 전진만을 남겨 놓고 있는 경우
+    # 현재 위치가 오른쪽 한 칸 전진 만을 남겨 놓고 있는 경우
     if (cx, cy) == (N - 1, N - 2):
         go_right(cx, cy)
         break
 
-    # N이 짝수라서 상부 함수가 (N-1, 0)에서 끝나는 경우
     if flag:
         cx, cy = go_right(cx, cy)
         cx, cy = go_up_right(cx, cy)
