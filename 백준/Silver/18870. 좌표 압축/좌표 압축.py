@@ -1,7 +1,6 @@
 N = int(input())
 arr = list(map(int, input().split()))
 sarr = sorted(list(set(arr)))
-ans = []
 
 def binary_search(target):
     left = 0
@@ -19,6 +18,4 @@ def binary_search(target):
 
 
 for ele in arr:
-    ans.append(binary_search(ele))
-
-print(*ans)
+    print(binary_search(ele), end=' ')
