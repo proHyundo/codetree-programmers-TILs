@@ -18,23 +18,19 @@ for _ in range(M):
     # 1차원 배열로 변환
     dx = [0, 1, 0, -1]
     dy = [-1, 0, 1, 0]
-    dir = cnt = flag = 0
-    cnt_mx = 1
+    dir = 0
     ci = cj = shark
     flat = [board[ci][cj]]
 
-    for t in range(N * N - 1):
-        cnt += 1
-        ci, cj = ci + dx[dir], cj + dy[dir]
-        flat.append(board[ci][cj])  # 2차원(달팽이) <-> 1차원 lst
-        if cnt == cnt_mx:  # 방향 변경
-            cnt = 0
-            dir = (dir + 1) % 4
-            if flag == 0:
-                flag = 1
-            else:
-                flag = 0  # 두 번에 한 번씩 길이 증가
-                cnt_mx += 1
+    for i in range(N*2 - 1):
+        for _ in range(i//2+1):
+            ni, nj = ci + dx[i%4], cj + dy[i%4]
+            if board[ni][nj] != 0:
+                flat.append(board[ni][nj])
+            ci, cj = ni, nj
+            print(i, ci, cj)
+        dir += 1
+
     print('=======================')
     print(flat)
     flat_del = []
@@ -45,13 +41,35 @@ for _ in range(M):
         if flat[i] == flat[i-1]:    # 연속되면 연속 개수 증가
             cnt += 1
         else:                       # 연속되지 않으면
+            # print('같지않음', flat[i], flat[i-1], cnt)
             if cnt >= 4:            # 연속 개수가 4개 이상인 경우 압축 반영
                 b_cnt[flat[i-1]] += cnt
-
-            flat_del.append(flat[i - 1])
+                flat_del.append(flat[i - 1])
+            else:
+                for _ in range(cnt):
+                    flat_del.append(flat[i - 1])
             cnt = 1
     if cnt > 1:
         b_cnt[flat[len(flat) - 1]] += cnt
         flat_del.append(flat[len(flat) - 1])
 
     print(flat_del)
+
+    group_lst = []
+    cnt = 1
+    for i in range(1, len(flat_del)):
+        if flat_del[i] == flat_del[i-1]:
+            cnt += 1
+        else:
+            if cnt >= 2:
+                group_lst.append(cnt)
+                group_lst.append(flat_del[i-1])
+            else:
+                group_lst.append(1)
+                group_lst.append(flat_del[i-1])
+            cnt = 1
+    if cnt > 1:
+        group_lst.append(cnt)
+        group_lst.append(flat_del[len(flat_del) - 1])
+
+    print(group_lst)
