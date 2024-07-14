@@ -1,26 +1,27 @@
 N = int(input())
-up_check = [False] * (2*N)
-right_cross_check = [False] * (2*N)
-left_cross_check = [False] * (2*N)
 ans = 0
 
+v_col = [False] * N
+v_daegakup = [False] * (N * 2)
+v_daegakdown = [False] * (N * 2)
 
-def dfs(n):
+def dfs(n, cnt):
     global ans
     if n == N:
-        ans += 1
+        if cnt == N:
+            ans += 1
         return
 
     for j in range(N):
-        if not up_check[j] and not right_cross_check[n + j] and not left_cross_check[n - j]:
-            up_check[j] = True
-            right_cross_check[n + j] = True
-            left_cross_check[n - j] = True
-            dfs(n + 1)
-            up_check[j] = False
-            right_cross_check[n + j] = False
-            left_cross_check[n - j] = False
+        if not v_col[j] and not v_daegakdown[n-j] and not v_daegakup[n+j]:
+            v_col[j] = True
+            v_daegakdown[n-j] = True
+            v_daegakup[n+j] = True
+            dfs(n+1, cnt+1)
+            v_col[j] = False
+            v_daegakdown[n-j] = False
+            v_daegakup[n+j] = False
 
 
-dfs(0)
+dfs(0, 0)
 print(ans)
