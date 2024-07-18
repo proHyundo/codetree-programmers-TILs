@@ -1,19 +1,22 @@
-from itertools import product
+lst = set()
+chars = ['', 'A', 'E', 'I', 'O', 'U']
+
+def dfs(n, word):
+    if n == 5:
+        lst.add(word)
+        return
+
+    for c in chars:
+        dfs(n+1, word + c)
+
 
 def solution(word):
-    _list = []
-    count = 0
     answer = 0
-    for i in range(1, 6):
-        for t in product(['A', 'E', 'I', 'O', 'U'], repeat = i):
-            _list.append(''.join(t))
+    dfs(0, '')
+    _lst = sorted(list(lst))
 
-    _list.sort()
-    
-    for t in _list:
-        count += 1
-        if word == t:
-            answer = count
+    for index, target, in enumerate(_lst):
+        if word == target:
+            answer = index
             break
-
     return answer
