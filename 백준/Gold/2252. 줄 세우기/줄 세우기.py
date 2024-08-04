@@ -1,3 +1,12 @@
+# N, M = map(int, input().split())
+# lst = {key:0 for key in range(1, N+1)}
+#
+# for _ in range(M):
+#     a, b = map(int, input().split())
+#     if lst.get(a) <= lst.get(b): # need update
+#         lst[a] += lst[b] + 1
+#
+# print(*sorted(lst, key = lambda x: lst[x], reverse=True))
 
 from collections import deque
 
