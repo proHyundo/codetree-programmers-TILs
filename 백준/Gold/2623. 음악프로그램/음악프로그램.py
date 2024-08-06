@@ -15,17 +15,17 @@ def topology_sort():
     result = []
     q = deque()
 
-    for index in range(1, N + 1):
+    for index in range(1, N + 1):    # 진입 차수가 0인 노드를 찾아서, 큐에 삽입
         if indegree[index] == 0:
             q.append(index)
 
     while q:
         cur = q.popleft()
-        result.append(cur)
+        result.append(cur)           # 큐에서 꺼내서 result에 저장
 
-        for node in adj[cur]:
+        for node in adj[cur]:        # 큐에서 꺼냈으니, 인접한 노드의 진입차수를 1 뺀다
             indegree[node] -= 1
-            if indegree[node] == 0:
+            if indegree[node] == 0:  # 만약 1 뺀 노드의 진입차수가 0 이라면 큐에 삽입
                 q.append(node)
 
     if len(result) != N:
