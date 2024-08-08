@@ -18,5 +18,6 @@ for i in range(1, N+1):
         if dp[i][j] >= M:
             answer = min(answer, j)
 
+print(dp)
 
 print(answer if M != 0 else 0)
