@@ -7,13 +7,18 @@ cars = [0] * (N+1)
 loads = [0] + list(map(int, input().split()))
 
 # 유동 차량 세팅
+# for _ in range(M):
+#     u, v, x = map(int, input().split())
+#     for j in range(u, v):
+#         cars[j] += x
+
+# 유동 차량 세팅 : Difference Array Technique 참고 링크 : https://jypark1111.tistory.com/m/201
 for _ in range(M):
     u, v, x = map(int, input().split())
     cars[u] += x
-    cars[v] -= x  # Adjusting for end point
+    cars[v] -= x
 
-# Process the difference array to get the actual car loads
-for i in range(1, N+1):
+for i in range(1, N):
     cars[i] += cars[i-1]
 
 
