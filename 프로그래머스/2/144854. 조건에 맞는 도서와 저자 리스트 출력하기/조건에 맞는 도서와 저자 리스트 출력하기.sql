@@ -1,0 +1,10 @@
+-- 코드를 입력하세요
+WITH cte_book AS (
+    SELECT BOOK_ID, AUTHOR_ID, PUBLISHED_DATE
+    FROM BOOK
+    WHERE CATEGORY LIKE '경제'
+)
+SELECT cte_book.BOOK_ID, t_author.AUTHOR_NAME, DATE_FORMAT(cte_book.PUBLISHED_DATE,'%Y-%m-%d') as PUBLISHED_DATE
+FROM cte_book 
+    INNER JOIN AUTHOR t_author ON cte_book.AUTHOR_ID = t_author.AUTHOR_ID
+ORDER BY cte_book.PUBLISHED_DATE ASC;
