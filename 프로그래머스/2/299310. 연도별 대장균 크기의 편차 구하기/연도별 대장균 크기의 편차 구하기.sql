@@ -1,0 +1,12 @@
+-- 코드를 작성해주세요
+WITH cte_max_by_year AS (
+    SELECT YEAR(DIFFERENTIATION_DATE) as 'by_year', MAX(SIZE_OF_COLONY) as 'max_val'
+    FROM ECOLI_DATA
+    GROUP BY YEAR(DIFFERENTIATION_DATE)
+)
+SELECT YEAR(t.DIFFERENTIATION_DATE) as 'YEAR', 
+    ABS(c.max_val - t.SIZE_OF_COLONY) as 'YEAR_DEV', 
+    t.ID
+FROM ECOLI_DATA t
+    LEFT JOIN cte_max_by_year c ON YEAR(t.DIFFERENTIATION_DATE) = c.by_year
+ORDER BY YEAR ASC, YEAR_DEV ASC;
