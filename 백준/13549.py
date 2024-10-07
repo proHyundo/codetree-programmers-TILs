@@ -13,15 +13,15 @@ def bfs(start):
         if cur == K:
             return memo[cur]
 
-        for nxt in [cur-1, cur+1]:
-            if 0 < nxt <= 100000:
-                q.append(nxt)
-                memo[nxt] = min(memo[nxt], memo[cur] + 1)
-
-        magic = cur * 2
-        if 0 < magic <= 100000:
-            q.append(magic)
-            memo[magic] = min(memo[magic], memo[cur])
+        if 0 <= cur-1 <= 100000 and (memo[cur-1] == sys.maxsize or memo[cur-1] > memo[cur]+1):
+            memo[cur-1] = memo[cur] + 1
+            q.append(cur-1)
+        if 0 <= cur*2 <= 100000 and (memo[cur*2] == sys.maxsize or memo[cur*2] > memo[cur]):
+            memo[cur*2] = memo[cur]
+            q.append(cur*2)
+        if 0 <= cur+1 <= 100000 and (memo[cur+1] == sys.maxsize or memo[cur+1] > memo[cur]+1):
+            memo[cur+1] = memo[cur] + 1
+            q.append(cur+1)
 
     return -1
 
