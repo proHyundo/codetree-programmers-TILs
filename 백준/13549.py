@@ -1,19 +1,29 @@
+import sys
+from collections import deque
 N, K = map(int, input().split())
-memo = [0] * 100001
+memo = [sys.maxsize] * 100001
 
-def dfs(locate, time):
-    if locate == K:
-        return
+def bfs(start):
+    q = deque()
+    q.append(start)
+    memo[start] = 0
 
-    if locate - 1 > 0:
-        memo[locate - 1] = time
-        dfs(locate - 1, time + 1)
-    if locate + 1 < 100001:
-        memo[locate + 1] = time
-        dfs(locate + 1, time + 1)
-    if locate * 2 < 100001:
-        memo[locate * 2] = time
-        dfs(locate * 2, time)
+    while q:
+        cur = q.popleft()
+        if cur == K:
+            return memo[cur]
 
-dfs(N, 0)
-print(memo[K])
+        for nxt in [cur-1, cur+1]:
+            if 0 < nxt <= 100000:
+                q.append(nxt)
+                memo[nxt] = min(memo[nxt], memo[cur] + 1)
+
+        magic = cur * 2
+        if 0 < magic <= 100000:
+            q.append(magic)
+            memo[magic] = min(memo[magic], memo[cur])
+
+    return -1
+
+
+print(bfs(N))
