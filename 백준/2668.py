@@ -6,28 +6,19 @@ visited = [False] * (N+1)
 answer = set()
 
 
-def dfs(cur):
-
-    global tmp_keys, tmp_values
-
-    visited[cur] = True
-    nxt = nums[cur]
-    tmp_keys.add(cur)
-    tmp_values.add(nxt)
-
-    if not visited[nxt] and nxt != nums[nxt]:
-        dfs(nxt)
-    else:
-        return
+def dfs(start, target):
+    nxt = nums[start]
+    if not visited[nxt]:
+        visited[nxt] = True
+        dfs(nxt, target)
+        visited[nxt] = False
+    if nxt == target:
+        answer.add(target)
 
 for i in range(1, N+1):
-    n = nums[i]
-    if not visited[n]:
-        tmp_keys = set()
-        tmp_values = set()
-        dfs(n)
-        if tmp_keys == tmp_values:
-            answer = answer.union(tmp_keys)
+    visited[i] = True
+    dfs(i, i)
+    visited[i] = False
 
 print(len(answer))
-print(*sorted(answer),sep='\n')
+print(*sorted(answer), sep='\n')
