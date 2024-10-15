@@ -11,7 +11,7 @@ for i in range(N-1):
         if arr[i+1] >= arr[i]:
             arr[i+1] = max(arr[i+2], arr[i]) + M
         else:
-            arr[i] = max(arr[i-1], arr[i+1]) + M
+            arr[i] = arr[i+1] + M
         ans += 1
 
 
