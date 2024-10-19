@@ -13,6 +13,7 @@ def bfs(sx, sy):
     visited = [
         [0] * M for _ in range(N)
     ]
+    visited[sx][sy] = 1
     cnt = 0
 
     while q:
@@ -25,7 +26,7 @@ def bfs(sx, sy):
                 q.append((nx, ny))
                 cnt = max(cnt, visited[nx][ny])
 
-    return cnt
+    return cnt - 1
 
 ans = 0
 for i in range(N):
@@ -34,6 +35,4 @@ for i in range(N):
             ans = max(ans, bfs(i, j))
 
 
-
-print(board)
 print(ans)
